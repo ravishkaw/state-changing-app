@@ -10,32 +10,13 @@ function App() {
   });
 
   function handleChange(event) {
-
     //Getting the new value and which input used
     const { value, name } = event.target;
 
     //prevValue is to store previous value
     setContact((prevValue) => {
-        //returning stored new values and previous values
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email,
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email,
-        };
-      } else if (name === "email") {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value,
-        };
-      }
+      //returning stored new values and previous values
+      return { ...prevValue, [name]: value };
     });
   }
 
